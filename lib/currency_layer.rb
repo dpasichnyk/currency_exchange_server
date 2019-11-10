@@ -31,9 +31,25 @@ class CurrencyLayer < Money::Bank::CurrencylayerBank
     end
   end
 
+  def currencies
+    @currencies ||= RatesHistory::SUPPORTED_CURRENCIES
+  end
+
   # @return [Redis]
   def redis_client
     @redis_client = Redis.current
+  end
+
+  # @return [String]
+  #   As we're interested only in specific currencies,
+  #     we could filter them using API.
+  def source_url
+    raise NoAccessKey if access_key.blank?
+
+    url = CL_URL
+    url = CL_SECURE_URL if secure_connection
+
+    "#{url}?source=#{source}&access_key=#{access_key}&currencies=#{currencies.join(',')}"
   end
 
   # @return [Integer] Cache time to live.

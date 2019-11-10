@@ -1,5 +1,5 @@
 class UpdateRatesJob < ApplicationJob
-  queue_as :currencies_sync
+  queue_as :rates_sync
 
   def perform(*)
     ActualizeRatesService.new.perform

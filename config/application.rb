@@ -24,9 +24,6 @@ module CurrencyExchangeServer
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
-    # Autoload lib directory
-    config.eager_load_paths += %W( #{Rails.root}/lib )
-
     # Sidekiq as queue adapter.
     config.active_job.queue_adapter = :sidekiq
 

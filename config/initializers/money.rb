@@ -1,3 +1,4 @@
+require 'currency_layer'
 require 'money'
 
 Money.default_bank = CurrencyLayer.instance
