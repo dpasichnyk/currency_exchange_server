@@ -1,0 +1,4 @@
+update_rates_job:
+  cron: '0 8 * * *'
+  class: 'UpdateRatesJob'
+  queue: currencies_sync

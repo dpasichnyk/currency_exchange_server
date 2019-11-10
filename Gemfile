@@ -28,6 +28,11 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # Currency rates from `https://currencylayer.com`.
 gem 'money-currencylayer-bank'
 
+# Queue implementation.
+gem 'sidekiq'
+# Scheduler for sidekiq.
+gem 'sidekiq-cron', '~> 1.1'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
