@@ -22,8 +22,11 @@ gem 'puma', '~> 3.11'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+# JSON Object Presenter.
+gem 'blueprinter'
+
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
+gem 'rack-cors'
 
 # Currency rates from `https://currencylayer.com`.
 gem 'money-currencylayer-bank'
@@ -32,6 +35,9 @@ gem 'money-currencylayer-bank'
 gem 'sidekiq'
 # Scheduler for sidekiq.
 gem 'sidekiq-cron', '~> 1.1'
+
+# Camelcase/underscore parameter keys.
+gem 'olive_branch'
 
 group :test do
   gem 'webmock'
