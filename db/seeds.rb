@@ -8,6 +8,15 @@
 
 data = JSON.parse(File.read(File.join Rails.root,'db', 'seed_data', 'rates.json'))
 
-data['rates'].each do |rate|
-  RatesHistory.find_or_create_by!(rate)
+data['rates'].each do |entry|
+  RatesHistory.find_or_create_by!(entry)
+
+  # Normalize USD to CHF.
+  if entry['to_currency'] == 'USD'
+    date = entry['date']
+    chf_to_eur_entry_for_date = data['rates'].find { |d| (d['date'] == date) && (d['to_currency'] != 'USD') }
+    rate = (entry['rate'] - chf_to_eur_entry_for_date['rate']).abs
+
+    RatesHistory.find_or_create_by!(date: date, from_currency: 'USD', to_currency: 'CHF', rate: rate)
+  end
 end
