@@ -32,7 +32,7 @@ class CurrencyLayer < Money::Bank::CurrencylayerBank
   end
 
   def currencies
-    @currencies ||= RatesHistory::SUPPORTED_CURRENCIES
+    @currencies ||= SUPPORTED_CURRENCIES
   end
 
   # @return [Redis]

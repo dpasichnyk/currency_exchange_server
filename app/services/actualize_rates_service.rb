@@ -19,7 +19,7 @@ class ActualizeRatesService
   # @raise [ActiveRecord::RecordInvalid]
   # @return [void]
   def store_histories
-    currencies = RatesHistory::SUPPORTED_CURRENCIES - [main_currency]
+    currencies = SUPPORTED_CURRENCIES - [main_currency]
 
     RatesHistory.transaction do
       currencies.each do |currency|

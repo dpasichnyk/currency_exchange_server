@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+data = JSON.parse(File.read(File.join Rails.root,'db', 'seed_data', 'rates.json'))
+
+data['rates'].each do |rate|
+  RatesHistory.find_or_create_by!(rate)
+end
