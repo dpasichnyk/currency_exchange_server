@@ -15,7 +15,8 @@ data['rates'].each do |entry|
   if entry['to_currency'] == 'USD'
     date = entry['date']
     chf_to_eur_entry_for_date = data['rates'].find { |d| (d['date'] == date) && (d['to_currency'] != 'USD') }
-    rate = (entry['rate'] - chf_to_eur_entry_for_date['rate']).abs
+    diff = entry['rate'] - chf_to_eur_entry_for_date['rate'].abs
+    rate = 1 + diff
 
     RatesHistory.find_or_create_by!(date: date, from_currency: 'USD', to_currency: 'CHF', rate: rate)
   end
